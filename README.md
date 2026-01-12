@@ -129,7 +129,7 @@ Built using **Streamlit**:
 ---
 
 ## 🏗️ Project Structure
-
+---
 sales_analytics/
 │
 ├── analytics/
@@ -185,7 +185,7 @@ sales_analytics/
 │
 ├── README.md
 └── requirements.txt
-
+---
 
 ## ⚙️ Requirements
 # Python Version
