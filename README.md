@@ -174,8 +174,8 @@ openai
 ```
 ## 📦 Installation
 ```
-git clone https://github.com/yourusername/sales-intelligence-platform.git
-cd sales-intelligence-platform
+git clone https://github.com/ishfaq24/sales_analytics.git
+cd sales_analytics
 pip install -r requirements.txt
 
 
