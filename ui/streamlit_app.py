@@ -12,7 +12,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from app.engine import run_engine
 from app.config import CONFIG
 from analytics.decisions import executive_decision_engine
-from analytics.forecasting import forecast_sales
+from analytics.forecasting import smart_forecast
 from analytics.alerts import generate_alerts
 from app.report_store import save_report, load_reports
 
@@ -175,15 +175,16 @@ executive = executive_decision_engine(
     results["monthly_sales"],
     results["growth"]
 )
-
 # --------------------------------------------------
-# Forecasting & Alerts
+# ADVANCED FORECASTING & ALERTS
 # --------------------------------------------------
-forecast_df = forecast_sales(results["monthly_sales"])
+forecast_df, model_used = smart_forecast(results["monthly_sales"])
 alerts = generate_alerts(results["monthly_sales"], forecast_df)
 
 st.markdown("---")
 st.subheader("🔮 Sales Forecast & Alerts")
+
+st.caption(f"Forecasting model used: **{model_used}**")
 
 st.line_chart(
     pd.concat(
@@ -197,15 +198,6 @@ st.line_chart(
 
 with st.expander("📊 Forecast Details"):
     st.dataframe(forecast_df)
-
-st.markdown("### 🚨 Alerts")
-for alert in alerts:
-    if "🚨" in alert:
-        st.error(alert)
-    elif "⚠" in alert:
-        st.warning(alert)
-    else:
-        st.success(alert)
 
 # --------------------------------------------------
 # KPIs

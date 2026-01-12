@@ -1,6 +1,25 @@
 import numpy as np
 import pandas as pd
 
+from analytics.advanced_forecast import arima_forecast
+
+
+def smart_forecast(monthly_sales, periods=3):
+    """
+    Uses ARIMA if possible, otherwise falls back
+    to robust baseline forecast.
+    """
+
+    arima_result = arima_forecast(monthly_sales, periods)
+
+    if arima_result is not None:
+        return arima_result, "ARIMA"
+
+    # Fallback to baseline forecast
+    baseline = forecast_sales(monthly_sales, periods)
+    return baseline, "Baseline"
+
+
 
 def forecast_sales(monthly_sales, periods=3):
     """
