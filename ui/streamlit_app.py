@@ -14,6 +14,7 @@ from app.config import CONFIG
 from analytics.decisions import executive_decision_engine
 from analytics.forecasting import forecast_sales
 from analytics.alerts import generate_alerts
+from app.report_store import save_report, load_reports
 
 # --------------------------------------------------
 # Page Config
@@ -284,6 +285,36 @@ else:
 st.markdown("### 💡 Recommendations")
 for rec in executive["recommendations"]:
     st.info(rec)
+
+
+# --------------------------------------------------
+# SAVE REPORT (PRODUCT FEATURE)
+# --------------------------------------------------
+st.markdown("---")
+st.subheader("💾 Save This Report")
+
+report_name = st.text_input("Report name", "Monthly Sales Overview")
+
+if st.button("💾 Save Report"):
+    report_payload = {
+        "name": report_name,
+        "filters": {
+            "region": selected_region,
+            "category": selected_category,
+            "date_range": [str(date_range[0]), str(date_range[1])]
+        },
+        "kpis": {
+            "total_revenue": float(results["kpis"]["total_revenue"]),
+            "avg_order_value": float(results["kpis"]["avg_order_value"])
+        },
+        "health_score": executive["health_score"],
+        "insights": results["insights"]
+    }
+
+    save_report(report_payload)
+    st.success("✅ Report saved successfully!")
+
+
 
 # --------------------------------------------------
 # Data Preview
