@@ -129,7 +129,7 @@ Built using **Streamlit**:
 ---
 
 ## 🏗️ Project Structure
----
+```text
 sales_analytics/
 │
 ├── analytics/
@@ -157,38 +157,11 @@ sales_analytics/
 │
 ├── README.md
 └── requirements.txt
+```
+# ⚙️ Requirements
+```
 
-sales_analytics/
-│
-├── analytics/
-│   ├── forecasting.py        # Baseline forecasting
-│   ├── advanced_forecast.py  # ARIMA forecasting
-│   ├── decisions.py          # Executive decision engine
-│   ├── alerts.py             # Risk & alert detection
-│   └── llm_narrative.py      # AI executive summaries
-│
-├── app/
-│   ├── engine.py             # Core analytics engine
-│   ├── config.py             # Configurations
-│   └── report_store.py       # Saved reports persistence
-│
-├── ui/
-│   └── streamlit_app.py      # Frontend application
-│
-├── reports/
-│   └── reports.json          # Saved report history
-│
-├── data/
-│   ├── sales.csv
-│   ├── customers.csv
-│   └── products.csv
-│
-├── README.md
-└── requirements.txt
----
-
-## ⚙️ Requirements
-# Python Version
+# ⚙️ Requirements
 
 Python 3.9+
 
@@ -198,10 +171,12 @@ streamlit
 requests
 statsmodels
 openai
-
+```
 ## 📦 Installation
-
+```
 git clone https://github.com/yourusername/sales-intelligence-platform.git
 cd sales-intelligence-platform
 pip install -r requirements.txt
 
+
+```
