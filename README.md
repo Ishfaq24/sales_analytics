@@ -22,6 +22,7 @@ The architecture and feature set closely resemble **modern BI / analytics SaaS p
 ---
 
 ## 🧠 Key Features
+https://sales-analytics-ib24.streamlit.app/
 
 ### 📥 Data Ingestion
 - Upload **Sales**, **Customers**, and **Products** CSV files
